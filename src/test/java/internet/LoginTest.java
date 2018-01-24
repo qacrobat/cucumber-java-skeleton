@@ -11,7 +11,7 @@ import pages.Login;
 
 import static org.junit.Assert.assertTrue;
 
-public class Stepdefs {
+public class LoginTest {
 
     private WebDriver driver;
     private Login login;
