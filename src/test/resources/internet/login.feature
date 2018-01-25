@@ -1,12 +1,20 @@
 Feature: Login
 
     Background:
-        Given Go to Loginpage
+        Given User is on Login Page
 
-    Scenario: Login sucessfully
-        When I enter my credentials
-        Then I am logged in
+    Scenario Outline: Successful Login with Valid Credentials
+	    When User enters "<username>" and "<password>"
+	    Then Message displayed Login Successfully
+    Examples:
+        | username | password |
+        | tomsmith | SuperSecretPassword! |
+        | tomsmith | SuperSecretPassword! |
 
-    Scenario: Invalid Login
-        When I enter invalid credentials
-        Then I am not logged in
+    Scenario Outline: Unsuccesful Login with Invalid Credentials
+	    When User enters "<username>" and "<password>"
+	    Then Message displayed that Login was not successful
+    Examples:
+        | username | password |
+        | tomsmith | SuperSecretPassword |
+        | tomsmith | SuperSecretPassword |

@@ -22,33 +22,26 @@ public class LoginSteps {
         login = new Login(driver);
     }
 
-    @Given("^Go to Loginpage$")
-    public void go_to_Loginpage(){
+    @Given("^User is on Login Page$")
+    public void user_is_on_Login_Page(){
         driver.navigate().to("http://the-internet.herokuapp.com/login");
         assertTrue("not on loginpage", login.onLoginPage());
     }
 
-    @When("^I enter my credentials$")
-    public void i_enter_my_credentials(){
-        login.with("tomsmith", "SuperSecretPassword!");
+    @When("^User enters \"([^\"]*)\" and \"([^\"]*)\"$")
+    public void user_enters_and(String username, String password){
+        login.with(username, password);
     }
 
-    @Then("^I am logged in$")
-    public void i_am_logged_in(){
+    @Then("^Message displayed Login Successfully$")
+    public void message_displayed_Login_Successfully(){
         assertTrue("success Message is not present", login.successMessagePresent());
     }
 
-    @When("^I enter invalid credentials$")
-    public void i_enter_invalid_credentials(){
-        login.with("tomsmith", "SuperSecretPassword!!!");
-
-    }
-
-    @Then("^I am not logged in$")
-    public void i_am_not_logged_in(){
+    @Then("^Message displayed that Login was not successful$")
+    public void message_displayed_that_Login_was_not_successful(){
         assertTrue("failure Message is not present", login.failureMessagePresent());
     }
-
 
     @After
     public void tearDown(){
