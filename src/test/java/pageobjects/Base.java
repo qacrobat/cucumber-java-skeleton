@@ -7,8 +7,8 @@ import org.openqa.selenium.WebElement;
 public class Base {
     private WebDriver driver;
 
-    public Base (WebDriver driver){
-        this.driver = driver;
+    public Base (WebDriver baseDriver){
+        driver = baseDriver;
     }
 
     public WebElement find(By locator){

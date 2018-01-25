@@ -7,9 +7,9 @@ public class Login extends Base {
 
     private WebDriver driver;
 
-    public Login(WebDriver driver){
-        super(driver);
-        this.driver = driver;
+    public Login(WebDriver loginDriver){
+        super(loginDriver);
+        driver = loginDriver;
         visit("http://the-internet.herokuapp.com/login");
     }
 
