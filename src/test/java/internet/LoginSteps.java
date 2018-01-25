@@ -7,7 +7,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import pages.Login;
+import pageobjects.Login;
 
 import static org.junit.Assert.assertTrue;
 
@@ -24,7 +24,6 @@ public class LoginSteps {
 
     @Given("^User is on Login Page$")
     public void user_is_on_Login_Page(){
-        driver.navigate().to("http://the-internet.herokuapp.com/login");
         assertTrue("not on loginpage", login.onLoginPage());
     }
 

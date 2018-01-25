@@ -1,14 +1,16 @@
-package pages;
+package pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class Login {
+public class Login extends Base {
 
     private WebDriver driver;
 
     public Login(WebDriver driver){
+        super(driver);
         this.driver = driver;
+        visit("http://the-internet.herokuapp.com/login");
     }
 
     By usernameLocator = By.id("username");
@@ -18,25 +20,24 @@ public class Login {
     By failureLocator = By.cssSelector(".flash.error");
 
 
+    public void visit(String url){
+        driver.get(url);
+    }
     public void with(String username, String password){
-        driver.findElement(usernameLocator).sendKeys(username);
-        driver.findElement(passwordLocator).sendKeys(password);
-        driver.findElement(loginBtn).click();
-
+        type(usernameLocator, username);
+        type(passwordLocator, password);
+        click(loginBtn);
     }
 
     public boolean successMessagePresent(){
-        return driver.findElement(successLocator).isDisplayed();
+        return isDisplayed(successLocator);
     }
 
     public boolean failureMessagePresent() {
-        return driver.findElement(failureLocator).isDisplayed();
+        return isDisplayed(failureLocator);
     }
 
     public boolean onLoginPage(){
-        return driver.findElement(usernameLocator).isDisplayed();
+        return isDisplayed(usernameLocator);
     }
-
-
-
 }

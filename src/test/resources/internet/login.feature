@@ -1,4 +1,4 @@
-Feature: Login
+Feature: Login Action
 
     Background:
         Given User is on Login Page
