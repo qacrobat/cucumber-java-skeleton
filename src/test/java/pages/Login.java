@@ -14,7 +14,8 @@ public class Login {
     By usernameLocator = By.id("username");
     By passwordLocator = By.id("password");
     By loginBtn = By.cssSelector("button");
-    By successLocator = By.id("flash");
+    By successLocator = By.cssSelector(".flash.success");
+    By failureLocator = By.cssSelector(".flash.error");
 
 
     public void with(String username, String password){
@@ -26,6 +27,10 @@ public class Login {
 
     public boolean successMessagePresent(){
         return driver.findElement(successLocator).isDisplayed();
+    }
+
+    public boolean failureMessagePresent() {
+        return driver.findElement(failureLocator).isDisplayed();
     }
 
     public boolean onLoginPage(){

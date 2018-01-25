@@ -1,6 +1,12 @@
 Feature: Login
 
-    Scenario: Login
-    Given I am on the Loginpage
-    When I enter my credentials
-    Then I am logged in
+    Background:
+        Given Go to Loginpage
+
+    Scenario: Login sucessfully
+        When I enter my credentials
+        Then I am logged in
+
+    Scenario: Invalid Login
+        When I enter invalid credentials
+        Then I am not logged in
